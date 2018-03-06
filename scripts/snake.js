@@ -5,6 +5,7 @@ function Snake() {
     this.yspeed = 0;
     this.total = 0;
     this.tail = [];
+    this.cpt = 0;
 
     this.dir = function(x,y) {
         this.xspeed = x;
@@ -14,6 +15,7 @@ function Snake() {
         let d = dist(this.x, this.y, pos.x, pos.y);
         if(d < 1) {
            this.total++;
+           this.cpt++;
            return true; 
         }
         return false;
@@ -26,10 +28,14 @@ function Snake() {
            if(d < 1) {
                 this.total = 0;
                 this.tail = []; 
+                this.cpt = 0;
                 alert("You're death!");
             }
         }
         
+    }
+    this.counter = function(){
+        document.getElementById("cpt").innerHTML = this.cpt;
     }
 
     this.update = function() { 

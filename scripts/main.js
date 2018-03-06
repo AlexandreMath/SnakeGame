@@ -11,7 +11,13 @@ var scl =20;
 var food;
 
 function setup() {
-    createCanvas(600,600);
+    //createCanvas(600,600);
+    let cnv = createCanvas(600, 600);
+    let x = (windowWidth - width) / 2;
+    let y = (windowHeight - height) / 2;
+    cnv.position(x, y);
+    cnv.parent('canva');
+
     s = new Snake();
     frameRate(10);
     pickLocation();
@@ -30,11 +36,12 @@ function draw() {
     if(s.eat(food)) {
         pickLocation();
     }
+    s.counter();
     s.death();
     s.update();
     s.show();
-
-    fill(255, 0, 100);
+    //food color
+    fill(255, 0, 50);
     rect(food.x, food.y, scl, scl);
 }
 function keyPressed() {
